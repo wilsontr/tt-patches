@@ -1,172 +1,8 @@
 #N canvas 239 40 1386 984 10;
-#N canvas 207 22 852 763 playhead 0;
-#X obj 198 658 outlet~;
-#X obj 365 657 outlet~;
-#X text 195 684 playback;
-#X obj 239 63 inlet;
-#X obj 135 64 inlet;
-#X text 133 36 play speed;
-#X text 20 18 play state (0 or 1);
-#X obj 49 60 inlet;
-#X obj 289 354 phasor~ 1;
-#X obj 287 400 *~;
-#X obj 257 548 *~;
-#X obj 50 293 sel 1;
-#X obj 50 329 t b b;
-#X msg 346 473 1;
-#X msg 419 477 0;
-#X msg 339 325 0;
-#X obj 256 313 *~ 1;
-#X obj 355 63 inlet;
-#X text 360 30 sample length (ms);
-#X obj 513 101 samplerate~;
-#X obj 490 212 / 1000;
-#X obj 491 247 *;
-#X obj 253 243 expr 1 / ($f1 / 1000);
-#X obj 399 410 *~;
-#X text 346 680 play position (ms);
-#X obj 496 652 outlet~;
-#X text 498 680 play position (0-1);
-#X obj 268 462 +~ 0;
-#X text 237 38 start pos (ms);
-#X obj 407 211 / 1000;
-#X obj 407 247 *;
-#X obj 364 553 *~;
-#X obj 494 563 *~;
-#X obj 652 657 outlet;
-#X text 648 682 end of loop;
-#X obj 653 543 spigot;
-#X obj 504 608 abs~;
-#X obj 372 613 abs~;
-#X obj 502 394 expr~ $v1 > 0.99;
-#X obj 502 428 threshold~ 0.5 1 0.5 0;
-#X obj 244 496 tabread4~ reel;
-#N canvas 36 29 1008 713 envelope~ 0;
-#N canvas 0 22 450 278 (subpatch) 0;
-#X array \$0-envelope 512 float 1;
-#A 0 0 0 0.0507812 0.101562 0.152344 0.203125 0.253906 0.304688 0.355469
-0.40625 0.457031 0.507812 0.558594 0.609375 0.660156 0.710938 0.761719
-0.8125 0.863281 0.914062 0.964844 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0.964844 0.914062 0.863281 0.8125 0.761719
-0.710938 0.660156 0.609375 0.558594 0.507812 0.457031 0.40625 0.355469
-0.304688 0.253906 0.203125 0;
-#X coords 0 1 512 0 200 140 1 0 0;
-#X restore 593 557 graph;
-#N canvas 0 22 554 573 generateEnvelope 0;
-#X obj 91 300 t f b;
-#X obj 91 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 118 351 f;
-#X obj 159 352 + 1;
-#X obj 90 388 clip 0 1;
-#X obj 91 451 tabwrite \$0-envelope;
-#X msg 159 172 0;
-#X floatatom 181 374 5 0 0 0 - - -, f 5;
-#X floatatom 129 416 5 0 0 0 - - -, f 5;
-#X obj 91 147 t b b b;
-#X msg 90 192 13 256;
-#X msg 105 249 0 256;
-#X obj 91 277 line 0 1, f 14;
-#X obj 105 225 delay 300;
-#X connect 0 0 4 0;
-#X connect 0 1 2 0;
-#X connect 1 0 9 0;
-#X connect 2 0 3 0;
-#X connect 2 0 5 1;
-#X connect 2 0 7 0;
-#X connect 3 0 2 1;
-#X connect 4 0 5 0;
-#X connect 4 0 8 0;
-#X connect 6 0 2 1;
-#X connect 6 0 12 0;
-#X connect 9 0 13 0;
-#X connect 9 1 10 0;
-#X connect 9 2 6 0;
-#X connect 10 0 12 0;
-#X connect 11 0 12 0;
-#X connect 12 0 0 0;
-#X connect 13 0 11 0;
-#X restore 45 580 pd generateEnvelope;
-#X obj 335 147 tabread4~ \$0-envelope;
-#X obj 335 105 *~ 512;
-#X obj 335 22 inlet~;
-#X text 392 24 index signal;
-#X obj 336 234 outlet~;
-#X connect 2 0 6 0;
-#X connect 3 0 2 0;
-#X connect 4 0 3 0;
-#X restore 75 544 pd envelope~;
-#X obj 197 619 *~;
-#X obj 512 47 r initbang;
-#X obj 252 207 clip 1 1e+08;
-#X connect 3 0 29 0;
-#X connect 4 0 16 1;
-#X connect 7 0 11 0;
-#X connect 8 0 9 0;
-#X connect 8 0 23 0;
-#X connect 8 0 32 0;
-#X connect 8 0 38 0;
-#X connect 8 0 41 0;
-#X connect 9 0 27 0;
-#X connect 10 0 42 0;
-#X connect 11 0 12 0;
-#X connect 11 1 14 0;
-#X connect 12 0 13 0;
-#X connect 12 1 15 0;
-#X connect 13 0 10 1;
-#X connect 13 0 31 1;
-#X connect 13 0 32 1;
-#X connect 13 0 35 1;
-#X connect 14 0 10 1;
-#X connect 14 0 31 1;
-#X connect 14 0 32 1;
-#X connect 14 0 35 1;
-#X connect 15 0 8 1;
-#X connect 16 0 8 0;
-#X connect 17 0 20 0;
-#X connect 17 0 23 1;
-#X connect 17 0 44 0;
-#X connect 19 0 21 1;
-#X connect 19 0 30 1;
-#X connect 20 0 21 0;
-#X connect 21 0 9 1;
-#X connect 22 0 16 0;
-#X connect 23 0 31 0;
-#X connect 27 0 40 0;
-#X connect 29 0 30 0;
-#X connect 30 0 27 1;
-#X connect 31 0 37 0;
-#X connect 31 0 1 0;
-#X connect 32 0 36 0;
-#X connect 32 0 25 0;
-#X connect 35 0 33 0;
-#X connect 38 0 39 0;
-#X connect 39 0 35 0;
-#X connect 40 0 10 0;
-#X connect 41 0 42 1;
-#X connect 42 0 0 0;
-#X connect 43 0 19 0;
-#X connect 44 0 22 0;
-#X restore 212 667 pd playhead;
 #X obj 95 533 hsl 128 15 -3 3 0 0 empty empty varispeed -2 -8 0 10
 -262144 -1 -1 0 1;
 #X obj 62 629 tgl 15 0 empty empty play 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 315 336 f;
-#X text 315 394 sample length (ms);
 #X obj 342 812 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 342 841 s eos;
@@ -175,80 +11,6 @@
 #X text 98 174 expo bipolar response for varispeed control;
 #X text 99 93 gene shift;
 #X restore 56 42 pd todo;
-#X obj 314 373 s saveReelMeta;
-#X floatatom 256 373 5 0 0 0 - - -, f 5;
-#N canvas 0 22 450 300 packReelLength 0;
-#X obj 178 32 inlet;
-#X obj 182 155 pack s f;
-#X obj 189 261 outlet;
-#X obj 180 117 symbol reel;
-#X obj 180 70 t b f;
-#X obj 183 200 list trim;
-#X connect 0 0 4 0;
-#X connect 1 0 5 0;
-#X connect 3 0 1 0;
-#X connect 4 0 3 0;
-#X connect 4 1 1 1;
-#X connect 5 0 2 0;
-#X restore 315 431 pd packReelLength;
-#N canvas 204 22 1039 699 windowLogic 0;
-#X obj 245 134 route reel splice gene;
-#X obj 245 33 inlet;
-#X msg 369 22 reel 2000 \; length of reel;
-#X obj 303 605 outlet;
-#X obj 395 606 outlet;
-#X text 302 635 start pos;
-#X text 398 632 length;
-#X text 173 599 window outlets;
-#X text 491 32 clear splice and set upper/lower bounds to 0 \, 2000
-;
-#X text 546 215 output is a start position and length. reel is the
-lowest priority \, but clears out any splice that's set. splice is
-higher priority than reel. gene is the highest priority and is based
-on the bounds calculated by splice or reel.;
-#X obj 396 563 r \$0-length;
-#X obj 303 561 r \$0-startPos;
-#N canvas 0 22 450 300 reel 0;
-#X obj 165 99 t b f, f 6;
-#X obj 164 56 inlet;
-#X obj 112 212 s \$0-startPos;
-#X msg 112 171 0;
-#X obj 217 211 s \$0-length;
-#X obj 231 146 s \$0-spliceLength;
-#X obj 230 176 s \$0-reelLength;
-#X obj 262 259 s recordLength;
-#X obj 112 242 s recordStart;
-#X connect 0 0 3 0;
-#X connect 0 1 4 0;
-#X connect 0 1 5 0;
-#X connect 0 1 6 0;
-#X connect 0 1 7 0;
-#X connect 1 0 0 0;
-#X connect 3 0 2 0;
-#X connect 3 0 8 0;
-#X restore 245 208 pd reel;
-#X text 559 120 calculate start pos and length based on number of divisions
-and index;
-#X floatatom 325 583 7 0 0 0 - - -, f 7;
-#X floatatom 414 586 5 0 0 0 - - -, f 5;
-#X text 562 101 divisions and index of gene;
-#X msg 368 99 gene 3 0;
-#X msg 368 59 splice 300 200 \; position and length of splice;
-#X text 562 58 set bounds to start pos and length in ms;
-#X connect 0 0 12 0;
-#X connect 1 0 0 0;
-#X connect 2 0 0 0;
-#X connect 10 0 4 0;
-#X connect 10 0 15 0;
-#X connect 11 0 3 0;
-#X connect 11 0 14 0;
-#X connect 17 0 0 0;
-#X connect 18 0 0 0;
-#X restore 252 586 pd windowLogic;
-#X floatatom 270 614 5 0 0 0 - - -, f 5;
-#X floatatom 349 614 10 0 0 0 - - -, f 10;
-#X obj 315 298 r reelLengthMS;
-#X floatatom 314 627 5 0 0 0 - - -, f 5;
 #X obj 1105 82 loadbang;
 #X obj 212 707 s~ processed;
 #X obj 892 440 hsl 128 15 0 1 0 0 empty empty sound_on_sound -2 -8
@@ -279,31 +41,17 @@ and index;
 #X obj 69 599 r playControl;
 #X obj 1105 112 delay 1000;
 #X msg 1105 142 \; pd dsp 1 \;;
-#X connect 0 0 18 0;
-#X connect 0 0 21 1;
-#X connect 0 3 5 0;
-#X connect 1 0 0 1;
-#X connect 2 0 0 0;
-#X connect 3 0 9 0;
-#X connect 3 0 10 0;
-#X connect 3 0 11 0;
-#X connect 5 0 6 0;
-#X connect 7 0 1 0;
-#X connect 11 0 12 0;
-#X connect 12 0 0 2;
-#X connect 12 0 13 0;
-#X connect 12 1 0 3;
-#X connect 12 1 14 0;
-#X connect 15 0 3 0;
-#X connect 16 0 0 3;
-#X connect 17 0 29 0;
-#X connect 19 0 20 0;
-#X connect 21 0 25 0;
-#X connect 22 0 21 2;
-#X connect 23 0 21 0;
-#X connect 25 0 24 0;
-#X connect 25 0 24 1;
-#X connect 27 0 2 0;
-#X connect 28 0 2 0;
-#X connect 29 0 30 0;
-#X connect 29 0 26 0;
+#X obj 219 820 osc~ 220;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;
+#X connect 6 0 18 0;
+#X connect 8 0 9 0;
+#X connect 11 0 10 2;
+#X connect 12 0 10 0;
+#X connect 14 0 13 0;
+#X connect 14 0 13 1;
+#X connect 16 0 1 0;
+#X connect 17 0 1 0;
+#X connect 18 0 19 0;
+#X connect 18 0 15 0;
+#X connect 20 0 14 0;
