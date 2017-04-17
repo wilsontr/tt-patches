@@ -162,7 +162,7 @@
 #X connect 43 0 22 0;
 #X restore 212 667 pd playhead;
 #X obj 95 533 hsl 128 15 -3 3 0 0 empty empty varispeed -2 -8 0 10
--262144 -1 -1 8000 1;
+-262144 -1 -1 0 1;
 #X obj 57 641 tgl 15 0 empty empty play 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X obj 253 325 f;
@@ -433,11 +433,11 @@ on the bounds calculated by splice or reel.;
 #X obj 1105 82 loadbang;
 #X obj 577 345 *~;
 #X obj 594 301 hsl 128 15 0 10 0 0 empty empty input_gain -2 -8 0 10
--262144 -1 -1 4100 1;
+-262144 -1 -1 0 1;
 #X floatatom 577 587 10 0 0 0 - - -, f 10;
 #X obj 212 732 s~ processed;
 #X obj 892 440 hsl 128 15 0 1 0 0 empty empty sound_on_sound -2 -8
-0 10 -262144 -1 -1 12700 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 890 471 s sos;
 #N canvas 0 22 450 300 crossfade~ 0;
 #X obj 97 63 inlet~;
@@ -715,7 +715,7 @@ on the bounds calculated by splice or reel.;
 #X obj 253 480 outlet~;
 #X obj 250 40 inlet~;
 #X obj 469 112 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8100 1;
+-1 -1 0 1;
 #X obj 465 146 * 1000;
 #X obj 465 174 + 50;
 #X obj 465 204 pack 0 1000;
@@ -723,17 +723,17 @@ on the bounds calculated by splice or reel.;
 #X obj 256 296 delread4~ \$0-delayline;
 #X obj 254 397 vcf~ 1;
 #X msg 322 345 9000;
-#X obj 333 479 s~ \$0-feedback;
+#X obj 362 472 s~ \$0-feedback;
 #X obj 319 46 r~ \$0-feedback;
-#X obj 333 449 *~;
-#X obj 380 405 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4200 1;
+#X obj 362 442 *~;
+#X obj 409 398 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
 #X floatatom 560 197 5 0 0 0 - - -, f 5;
 #X obj 249 79 delwrite~ \$0-delayline 1500;
 #X obj 322 319 r initbang;
 #X obj 465 78 r delaytime;
-#X obj 376 372 r feedback;
-#X obj 253 439 tanh~;
+#X obj 405 365 r feedback;
+#X obj 253 439 cyclone/tanh~;
 #X connect 1 0 15 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
@@ -771,7 +771,7 @@ on the bounds calculated by splice or reel.;
 #X restore 143 413 pd crossfade~;
 #X obj 259 355 r delaymix;
 #X obj 256 388 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5400 1;
+-1 -1 0 1;
 #X obj 145 453 cyclone/tanh~;
 #X connect 1 0 2 0;
 #X connect 2 0 6 0;
