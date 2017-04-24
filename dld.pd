@@ -49,7 +49,8 @@
 #X obj 365 359 s delay2fbk;
 #X obj 443 358 s delay2mix;
 #X obj 763 465 tedium_input 17;
-#X msg 116 136 smooth 10;
+#X msg 116 136 smooth 20;
+#X obj 296 183 print s1delay;
 #X connect 1 0 20 0;
 #X connect 2 0 1 0;
 #X connect 3 0 19 0;
@@ -70,6 +71,7 @@
 #X connect 18 0 36 0;
 #X connect 19 0 35 0;
 #X connect 20 0 34 0;
+#X connect 20 0 44 0;
 #X connect 21 0 22 0;
 #X connect 21 1 23 0;
 #X connect 21 2 26 0;
