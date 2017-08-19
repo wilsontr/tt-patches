@@ -468,7 +468,6 @@ will work everywhere.;
 #X connect 45 0 44 0;
 #X connect 45 0 46 0;
 #X connect 45 0 47 0;
-#X connect 45 0 83 0;
 #X connect 47 0 48 0;
 #X connect 48 0 36 0;
 #X connect 48 1 37 0;
