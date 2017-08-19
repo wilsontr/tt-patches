@@ -8,7 +8,7 @@ This is not a clean algorithm. There is no oversampling, so things can get dirty
 
 ## Controls
 
-![Controls](https://raw.githubusercontent.com/wilsontr/tt-patches/master/basil/basil-layout.svg)
+![Controls](https://raw.githubusercontent.com/wilsontr/tt-patches/master/basil/basil-layout.png)
 
 ### Pitch
 
